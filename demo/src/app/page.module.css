@@ -1,0 +1,182 @@
+.page {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 1440px;
+  margin: 0 auto;
+  /* nav 높이 */
+  padding-top: 74px;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 74px;
+
+  background-color: #f9f9fc;
+  padding: 0px 80px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.nav .download_btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.page h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2f2020;
+  padding-bottom: 50px;
+}
+
+.page hr {
+  width: 90%;
+  text-align: center;
+  background-color: #aca6a6;
+}
+
+.page .top {
+  padding: 0 80px;
+}
+.page .middle {
+  padding-left: 80px;
+}
+.page .bottom {
+  padding: 0 80px;
+}
+.top .banner {
+  padding: 150px 0 113px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+}
+
+.top .desc h3 {
+  font-size: 32px;
+  color: #2f2020;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.top .desc h4 {
+  font-size: 24px;
+  color: #6e6363;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+
+.top .desc h5 {
+  font-size: 24px;
+  color: #0070c9;
+  font-weight: 400;
+  padding-bottom: 26px;
+}
+
+.top .desc p {
+  font-size: 18px;
+  color: #0070c9;
+  font-weight: 400;
+  padding-bottom: 16px;
+}
+
+.top .desc div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.top .desc div img {
+  width: 20px;
+  height: 20px;
+}
+
+.top .desc div span {
+  font-size: 14px;
+  color: #827979;
+}
+
+.top .desc_list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.top h2 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #584c4c;
+  width: 100%;
+  text-align: center;
+}
+
+.top .desc_list h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2f2020;
+  padding-bottom: 10px;
+}
+
+.top .desc_list h4 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #6e6363;
+}
+
+.top hr {
+  width: 160px;
+  text-align: center;
+  background-color: #aca6a6;
+  margin: 50px auto;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding-bottom: 80px;
+}
+
+.review_container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: end;
+  height: 200px;
+  padding-right: 80px;
+  margin-top: 80px;
+  background-color: #f2f2f8;
+  justify-content: center;
+}
+
+.footer img {
+  width: 74px;
+  height: 74px;
+  margin-left: 24px;
+  font-size: 14px;
+  color: #a2a2b1;
+}

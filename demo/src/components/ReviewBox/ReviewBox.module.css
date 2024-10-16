@@ -1,0 +1,24 @@
+.reviewBox {
+  height: 243px;
+  flex: 1;
+  overflow: hidden;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 33px 27px;
+}
+∂ .stars img {
+  width: 20px;
+  height: 20px;
+}
+
+.h3 {
+  padding: 20px 0 10px 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #2f2020;
+}
+
+.p {
+  font-size: 18px;
+  color: #584c4c;
+}
