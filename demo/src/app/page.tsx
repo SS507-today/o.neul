@@ -1,12 +1,12 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 
 import styles from "./page.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
 import { Button, ButtonType } from "@/components/Button/Button";
 import { ReviewBox } from "@/components/ReviewBox/ReviewBox";
@@ -92,7 +92,7 @@ export default function Home() {
             className="mySwiper"
           >
             {config.img.map((item, index) => (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <img src={item} />
               </SwiperSlide>
             ))}
