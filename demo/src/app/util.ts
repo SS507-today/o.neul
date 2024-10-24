@@ -21,3 +21,9 @@ export const sizes = {
     text: " ‘오늘은’은 아날로그의 교환일기를 디지털로 옮긴 디지털 교환일기입니다.\n친구들과 함께 여러분의 오늘을 교환해보세요.",
   },
 };
+
+export enum RedirectType {
+  GIT = "git",
+  FORM = "form",
+  INSTA = "insta",
+}

@@ -14,7 +14,7 @@ import { ReviewBox } from "@/components/ReviewBox/ReviewBox";
 
 import { config } from "./config";
 import { useViewport } from "@/hooks/useViewport";
-import { MQ, sizes } from "./util";
+import { MQ, RedirectType, sizes } from "./util";
 
 export default function Home() {
   const { width } = useViewport();
@@ -44,6 +44,18 @@ export default function Home() {
         behavior: "smooth",
       });
     }
+  };
+
+  const handleRedirect = (type: RedirectType) => {
+    let url = "";
+    if (type === RedirectType.GIT) {
+      url = "https://github.com/SS507-today";
+    } else if (type === RedirectType.FORM) {
+      url = "https://forms.gle/ssrsWhW7yHXaaafB9";
+    } else if (type === RedirectType.INSTA) {
+      url = "https://www.instagram.com/o.neul_app?igsh=MXd3bXJidzNnc3RiYQ==";
+    }
+    window.location.href = url;
   };
 
   return (
@@ -158,11 +170,13 @@ export default function Home() {
               text="oneul.apk 다운로드"
               type={ButtonType.DARK}
               desc="현재는 안드로이드 버전만 가능해요"
+              onClick={() => {}}
             />
             <Button
               text="후기 작성하기"
               type={ButtonType.BRIGHT}
               desc="추첨을 통해 기프티콘을 드려요"
+              onClick={() => handleRedirect(RedirectType.FORM)}
             />
           </div>
           <div className={styles.review_container}>
@@ -179,8 +193,16 @@ export default function Home() {
       </main>
       <footer className={styles.footer}>
         <div>
-          <img src="/assets/github.svg" width={social} />
-          <img src="/assets/insta.svg" width={social} />
+          <img
+            src="/assets/github.svg"
+            width={social}
+            onClick={() => handleRedirect(RedirectType.GIT)}
+          />
+          <img
+            src="/assets/insta.svg"
+            width={social}
+            onClick={() => handleRedirect(RedirectType.FORM)}
+          />
         </div>
         <div>contact instagram @o.neul_app</div>
       </footer>
