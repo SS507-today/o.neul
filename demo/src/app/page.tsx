@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import styles from "./page.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -59,6 +59,14 @@ export default function Home() {
     }
     window.location.href = url;
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
