@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 import styles from "./page.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,12 +11,14 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 import { Button, ButtonType } from "@/components/Button/Button";
 import { ReviewBox } from "@/components/ReviewBox/ReviewBox";
+import Splash from "@/components/Splash/Splash";
 
 import { config } from "./config";
 import { useViewport } from "@/hooks/useViewport";
 import { MQ, RedirectType, sizes } from "./util";
 
 export default function Home() {
+  const [showSplash, setShowSplash] = useState<boolean>(true);
   const { width } = useViewport();
   const selectedSize = width < MQ ? sizes.mobile : sizes.PC;
   const {
@@ -59,153 +61,157 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.page}>
-      <nav className={styles.nav}>
-        <div>
-          <img src="/assets/logo.svg" />
-        </div>
-        <div className={styles.download_btn} onClick={handleScrollToBottom}>
-          <span>앱 다운로드</span>
-          <img src="/assets/arrow.svg" width={arrowWidth} />
-        </div>
-      </nav>
-      <main className={styles.main}>
-        <section className={styles.top}>
-          <div className={styles.banner}>
-            <div>
-              <img src="/assets/app_icon.svg" width={logoWidth}></img>
-            </div>
-            <div className={styles.desc}>
-              <h3>{config.title}</h3>
-              <h4>{config.subtitle}</h4>
-              <h5>{config.company}</h5>
-              <p>{config.rank}</p>
+    <>
+      {showSplash && <Splash />}
+
+      <div className={styles.page}>
+        <nav className={styles.nav}>
+          <div>
+            <img src="/assets/logo.svg" />
+          </div>
+          <div className={styles.download_btn} onClick={handleScrollToBottom}>
+            <span>앱 다운로드</span>
+            <img src="/assets/arrow.svg" width={arrowWidth} />
+          </div>
+        </nav>
+        <main className={styles.main}>
+          <section className={styles.top}>
+            <div className={styles.banner}>
               <div>
-                {Array(5)
-                  .fill(0)
-                  .map((_, i) => (
-                    <img key={i} src="/assets/star.svg" />
-                  ))}
-                <span>{config.rating}</span>
+                <img src="/assets/app_icon.svg" width={logoWidth}></img>
+              </div>
+              <div className={styles.desc}>
+                <h3>{config.title}</h3>
+                <h4>{config.subtitle}</h4>
+                <h5>{config.company}</h5>
+                <p>{config.rank}</p>
+                <div>
+                  {Array(5)
+                    .fill(0)
+                    .map((_, i) => (
+                      <img key={i} src="/assets/star.svg" />
+                    ))}
+                  <span>{config.rating}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <h2>{text}</h2>
+            <h2>{text}</h2>
+            <hr />
+            <div className={styles.desc_list}>
+              {config.descriptions.map((item, index) => (
+                <div key={index}>
+                  <h3>{item.title}</h3>
+                  <h4>{item.desc}</h4>
+                </div>
+              ))}
+            </div>
+          </section>
           <hr />
-          <div className={styles.desc_list}>
-            {config.descriptions.map((item, index) => (
-              <div key={index}>
-                <h3>{item.title}</h3>
-                <h4>{item.desc}</h4>
-              </div>
-            ))}
-          </div>
-        </section>
-        <hr />
-        <section className={styles.middle}>
-          <h1>iPhone 스크린샷</h1>
-          <Swiper
-            slidesPerView="auto"
-            spaceBetween={screenGap}
-            loop={true}
-            navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            }}
-            autoplay={{
-              delay: 1000,
-            }}
-            modules={[Navigation, Autoplay]}
-            className="mySwiper"
-          >
-            {config.img.map((item, index) => (
-              <SwiperSlide key={index} style={{ width: `${screenWidth}px` }}>
-                <img src={item} width={screenWidth} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div
-            className="swiper-button-wrapper"
-            style={{
-              position: "relative",
-              display: "flex",
-              justifyContent: "flex-end",
-              gap: `${pagingGap}px`,
-            }}
-          >
+          <section className={styles.middle}>
+            <h1>iPhone 스크린샷</h1>
+            <Swiper
+              slidesPerView="auto"
+              spaceBetween={screenGap}
+              loop={true}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }}
+              autoplay={{
+                delay: 1000,
+              }}
+              modules={[Navigation, Autoplay]}
+              className="mySwiper"
+            >
+              {config.img.map((item, index) => (
+                <SwiperSlide key={index} style={{ width: `${screenWidth}px` }}>
+                  <img src={item} width={screenWidth} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
             <div
-              className="swiper-button-prev"
+              className="swiper-button-wrapper"
               style={{
-                marginTop: "0",
-                position: "static",
-                color: "#fff",
-                height: "100px",
+                position: "relative",
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: `${pagingGap}px`,
               }}
             >
-              <img
-                src="/assets/circle-arrow.svg"
-                width={pagingArrow}
-                style={{ transform: "rotate(180deg)" }}
+              <div
+                className="swiper-button-prev"
+                style={{
+                  marginTop: "0",
+                  position: "static",
+                  color: "#fff",
+                  height: "100px",
+                }}
+              >
+                <img
+                  src="/assets/circle-arrow.svg"
+                  width={pagingArrow}
+                  style={{ transform: "rotate(180deg)" }}
+                />
+              </div>
+              <div
+                className="swiper-button-next"
+                style={{
+                  marginTop: "0",
+                  position: "static",
+                  paddingRight: "10px",
+                  color: "#fff",
+                  height: "100px",
+                }}
+              >
+                <img src="/assets/circle-arrow.svg" width={pagingArrow} />
+              </div>
+            </div>
+          </section>
+          <hr />
+          <section className={styles.bottom} ref={bottomSectionRef}>
+            <h1>앱 다운로드 및 후기</h1>
+            <div className={styles.button_container}>
+              <Button
+                text="oneul.apk 다운로드"
+                type={ButtonType.DARK}
+                desc="현재는 안드로이드 버전만 가능해요"
+                onClick={() => {}}
+              />
+              <Button
+                text="후기 작성하기"
+                type={ButtonType.BRIGHT}
+                desc="추첨을 통해 기프티콘을 드려요"
+                onClick={() => handleRedirect(RedirectType.FORM)}
               />
             </div>
-            <div
-              className="swiper-button-next"
-              style={{
-                marginTop: "0",
-                position: "static",
-                paddingRight: "10px",
-                color: "#fff",
-                height: "100px",
-              }}
-            >
-              <img src="/assets/circle-arrow.svg" width={pagingArrow} />
+            <div className={styles.review_container}>
+              {config.reviews.map((review, index) => (
+                <ReviewBox
+                  key={index}
+                  stars={review.stars}
+                  title={review.title}
+                  description={review.description}
+                />
+              ))}
             </div>
-          </div>
-        </section>
-        <hr />
-        <section className={styles.bottom} ref={bottomSectionRef}>
-          <h1>앱 다운로드 및 후기</h1>
-          <div className={styles.button_container}>
-            <Button
-              text="oneul.apk 다운로드"
-              type={ButtonType.DARK}
-              desc="현재는 안드로이드 버전만 가능해요"
-              onClick={() => {}}
+          </section>
+        </main>
+        <footer className={styles.footer}>
+          <div>
+            <img
+              src="/assets/github.svg"
+              width={social}
+              onClick={() => handleRedirect(RedirectType.GIT)}
             />
-            <Button
-              text="후기 작성하기"
-              type={ButtonType.BRIGHT}
-              desc="추첨을 통해 기프티콘을 드려요"
+            <img
+              src="/assets/insta.svg"
+              width={social}
               onClick={() => handleRedirect(RedirectType.FORM)}
             />
           </div>
-          <div className={styles.review_container}>
-            {config.reviews.map((review, index) => (
-              <ReviewBox
-                key={index}
-                stars={review.stars}
-                title={review.title}
-                description={review.description}
-              />
-            ))}
-          </div>
-        </section>
-      </main>
-      <footer className={styles.footer}>
-        <div>
-          <img
-            src="/assets/github.svg"
-            width={social}
-            onClick={() => handleRedirect(RedirectType.GIT)}
-          />
-          <img
-            src="/assets/insta.svg"
-            width={social}
-            onClick={() => handleRedirect(RedirectType.FORM)}
-          />
-        </div>
-        <div>contact instagram @o.neul_app</div>
-      </footer>
-    </div>
+          <div>contact instagram @o.neul_app</div>
+        </footer>
+      </div>
+    </>
   );
 }
