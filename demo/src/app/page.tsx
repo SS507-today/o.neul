@@ -30,6 +30,7 @@ export default function Home() {
     pagingGap,
     social,
     text,
+    marginArrow,
   } = selectedSize;
   const bottomSectionRef = useRef<HTMLElement | null>(null);
 
@@ -144,6 +145,7 @@ export default function Home() {
                 display: "flex",
                 justifyContent: "flex-end",
                 gap: `${pagingGap}px`,
+                marginRight: `${marginArrow}px`,
               }}
             >
               <div
@@ -166,7 +168,6 @@ export default function Home() {
                 style={{
                   marginTop: "0",
                   position: "static",
-                  paddingRight: "10px",
                   color: "#fff",
                   height: "100px",
                 }}

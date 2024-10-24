@@ -7,6 +7,7 @@
   flex-direction: column;
   gap: 50px;
   max-width: 1440px;
+  overflow-x: hidden;
   margin: 0 auto;
   /* nav 높이 */
   padding-top: 74px;
