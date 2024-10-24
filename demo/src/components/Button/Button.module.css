@@ -32,3 +32,17 @@
   font-size: 18px;
   text-align: center;
 }
+
+@media (max-width: 500px) {
+  .container {
+    align-items: center;
+  }
+  .button {
+    width: 219px;
+    height: 46px;
+    font-size: 14px;
+  }
+  .desc {
+    font-size: 12px;
+  }
+}

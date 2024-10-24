@@ -1,12 +1,11 @@
 .reviewBox {
-  height: 243px;
   flex: 1;
   overflow: hidden;
   background-color: #f8f8f8;
   border-radius: 12px;
   padding: 33px 27px;
 }
-∂ .stars img {
+.stars img {
   width: 20px;
   height: 20px;
 }
@@ -21,4 +20,20 @@
 .p {
   font-size: 18px;
   color: #584c4c;
+}
+
+@media (max-width: 500px) {
+  .reviewBox {
+    min-width: 283px;
+    max-width: 283px;
+    padding: 24px 19px;
+  }
+  .h3 {
+    padding: 10px 0 6px 0;
+    font-size: 13px;
+  }
+  .p {
+    font-size: 13px;
+    height: 66px;
+  }
 }

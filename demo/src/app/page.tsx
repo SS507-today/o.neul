@@ -6,14 +6,29 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { Pagination } from "swiper/modules";
+import "swiper/css/navigation";
+import { Navigation, Autoplay } from "swiper/modules";
 
 import { Button, ButtonType } from "@/components/Button/Button";
 import { ReviewBox } from "@/components/ReviewBox/ReviewBox";
 
 import { config } from "./config";
+import { useViewport } from "@/hooks/useViewport";
+import { MQ, sizes } from "./util";
 
 export default function Home() {
+  const { width } = useViewport();
+  const selectedSize = width < MQ ? sizes.mobile : sizes.PC;
+  const {
+    logoWidth,
+    arrowWidth,
+    screenWidth,
+    screenGap,
+    pagingArrow,
+    pagingGap,
+    social,
+    text,
+  } = selectedSize;
   const bottomSectionRef = useRef<HTMLElement | null>(null);
 
   const handleScrollToBottom = () => {
@@ -39,14 +54,14 @@ export default function Home() {
         </div>
         <div className={styles.download_btn} onClick={handleScrollToBottom}>
           <span>앱 다운로드</span>
-          <img src="/assets/arrow.svg" />
+          <img src="/assets/arrow.svg" width={arrowWidth} />
         </div>
       </nav>
       <main className={styles.main}>
         <section className={styles.top}>
           <div className={styles.banner}>
             <div>
-              <img src="/assets/app_icon.svg"></img>
+              <img src="/assets/app_icon.svg" width={logoWidth}></img>
             </div>
             <div className={styles.desc}>
               <h3>{config.title}</h3>
@@ -63,11 +78,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <h2>
-            ‘오늘은’은 아날로그의 교환일기를 디지털로 옮긴 디지털
-            교환일기입니다. <br />
-            친구들과 함께 여러분의 오늘을 교환해보세요.
-          </h2>
+          <h2>{text}</h2>
           <hr />
           <div className={styles.desc_list}>
             {config.descriptions.map((item, index) => (
@@ -82,21 +93,62 @@ export default function Home() {
         <section className={styles.middle}>
           <h1>iPhone 스크린샷</h1>
           <Swiper
-            slidesPerView={4}
-            spaceBetween={30}
+            slidesPerView="auto"
+            spaceBetween={screenGap}
             loop={true}
-            pagination={{
-              clickable: true,
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
             }}
-            modules={[Pagination]}
+            autoplay={{
+              delay: 1000,
+            }}
+            modules={[Navigation, Autoplay]}
             className="mySwiper"
           >
             {config.img.map((item, index) => (
-              <SwiperSlide key={index}>
-                <img src={item} />
+              <SwiperSlide key={index} style={{ width: `${screenWidth}px` }}>
+                <img src={item} width={screenWidth} />
               </SwiperSlide>
             ))}
           </Swiper>
+          <div
+            className="swiper-button-wrapper"
+            style={{
+              position: "relative",
+              display: "flex",
+              justifyContent: "flex-end",
+              gap: `${pagingGap}px`,
+            }}
+          >
+            <div
+              className="swiper-button-prev"
+              style={{
+                marginTop: "0",
+                position: "static",
+                color: "#fff",
+                height: "100px",
+              }}
+            >
+              <img
+                src="/assets/circle-arrow.svg"
+                width={pagingArrow}
+                style={{ transform: "rotate(180deg)" }}
+              />
+            </div>
+            <div
+              className="swiper-button-next"
+              style={{
+                marginTop: "0",
+                position: "static",
+                paddingRight: "10px",
+                color: "#fff",
+                height: "100px",
+              }}
+            >
+              <img src="/assets/circle-arrow.svg" width={pagingArrow} />
+            </div>
+          </div>
         </section>
         <hr />
         <section className={styles.bottom} ref={bottomSectionRef}>
@@ -127,8 +179,8 @@ export default function Home() {
       </main>
       <footer className={styles.footer}>
         <div>
-          <img src="/assets/github.svg" />
-          <img src="/assets/insta.svg" />
+          <img src="/assets/github.svg" width={social} />
+          <img src="/assets/insta.svg" width={social} />
         </div>
         <div>contact instagram @o.neul_app</div>
       </footer>
