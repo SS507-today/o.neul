@@ -28,4 +28,5 @@ export enum RedirectType {
   GIT = "git",
   FORM = "form",
   INSTA = "insta",
+  APP = "app",
 }

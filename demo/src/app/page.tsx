@@ -57,6 +57,9 @@ export default function Home() {
       url = "https://forms.gle/ssrsWhW7yHXaaafB9";
     } else if (type === RedirectType.INSTA) {
       url = "https://www.instagram.com/o.neul_app?igsh=MXd3bXJidzNnc3RiYQ==";
+    } else if (type === RedirectType.APP) {
+      url =
+        "https://drive.google.com/file/d/1qUC1haUFLQDgaA6150ISq64mzdDp-0W1/view?usp=sharing";
     }
     window.location.href = url;
   };
@@ -184,7 +187,9 @@ export default function Home() {
                 text="oneul.apk 다운로드"
                 type={ButtonType.DARK}
                 desc="현재는 안드로이드 버전만 가능해요"
-                onClick={() => {}}
+                onClick={() => {
+                  handleRedirect(RedirectType.APP);
+                }}
               />
               <Button
                 text="후기 작성하기"
@@ -215,7 +220,7 @@ export default function Home() {
             <img
               src="/assets/insta.svg"
               width={social}
-              onClick={() => handleRedirect(RedirectType.FORM)}
+              onClick={() => handleRedirect(RedirectType.INSTA)}
             />
           </div>
           <div>contact instagram @o.neul_app</div>
