@@ -17,8 +17,6 @@ import { config } from "./config";
 import { useViewport } from "@/hooks/useViewport";
 import { MQ, RedirectType, sizes } from "./util";
 
-import * as gtag from "@/lib/gtag";
-
 export default function Home() {
   const [showSplash, setShowSplash] = useState<boolean>(true);
   const { width } = useViewport();
