@@ -17,6 +17,8 @@ import { config } from "./config";
 import { useViewport } from "@/hooks/useViewport";
 import { MQ, RedirectType, sizes } from "./util";
 
+import * as gtag from "@/lib/gtag";
+
 export default function Home() {
   const [showSplash, setShowSplash] = useState<boolean>(true);
   const { width } = useViewport();
@@ -187,6 +189,7 @@ export default function Home() {
                 text="oneul.apk 다운로드"
                 type={ButtonType.DARK}
                 desc="현재는 안드로이드 버전만 가능해요"
+                gaCategory="apk_button_click"
                 onClick={() => {
                   handleRedirect(RedirectType.APP);
                 }}
@@ -195,6 +198,7 @@ export default function Home() {
                 text="후기 작성하기"
                 type={ButtonType.BRIGHT}
                 desc="추첨을 통해 기프티콘을 드려요"
+                gaCategory="review_button_click"
                 onClick={() => handleRedirect(RedirectType.FORM)}
               />
             </div>
