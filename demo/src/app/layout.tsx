@@ -1,3 +1,4 @@
+import GA from "@/components/GA/GA";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -13,14 +14,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
         />
       </head>
-      <body>{children}</body>
+
+      <body>
+        {process.env.NEXT_PUBLIC_GA_ID ? <GA /> : <div>400 GA Error</div>}
+        {children}
+      </body>
     </html>
   );
 }
