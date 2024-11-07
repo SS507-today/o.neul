@@ -61,7 +61,7 @@ export default function Home() {
       url = "https://www.instagram.com/o.neul_app?igsh=MXd3bXJidzNnc3RiYQ==";
     } else if (type === RedirectType.APP) {
       url =
-        "https://drive.google.com/file/d/1qUC1haUFLQDgaA6150ISq64mzdDp-0W1/view?usp=sharing";
+        "https://drive.google.com/drive/folders/1-TXlG3_nq36ambS3WUHAn-pvIC3E4UwM?usp=sharing";
     }
     window.location.href = url;
   };
