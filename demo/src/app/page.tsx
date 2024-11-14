@@ -120,7 +120,7 @@ export default function Home() {
           </section>
           <hr />
           <section className={styles.middle}>
-            <h1>Galaxy 스크린샷</h1>
+            <h1>Android 스크린샷</h1>
             <Swiper
               slidesPerView="auto"
               spaceBetween={screenGap}
